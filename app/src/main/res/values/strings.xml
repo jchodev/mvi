@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MVITest</string>
+
+    <string name="retry">Retry</string>
+    <string name="time_out_error">Timeout, please try later</string>
+    <string name="unknown_host_error">Please check your network connection</string>
+
+</resources>
