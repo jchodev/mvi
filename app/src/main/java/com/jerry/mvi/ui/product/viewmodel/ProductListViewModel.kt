@@ -23,8 +23,8 @@ class ProductListViewModel @Inject constructor(
     private val networkRepository : NetworkRepository
 ) : BaseViewModel() {
 
-    //from UI Intentchannel
-    val productListIntent = Channel<ProductListIntent>(Channel.UNLIMITED)
+    //from UI Intent Channel
+    val productListIntent = Channel<ProductListIntent>()
 
     private val _productListViewState = MutableStateFlow<ViewState<List<Product>>>(ViewState.Initial)
     val productListViewState = _productListViewState.asStateFlow()
@@ -55,10 +55,10 @@ class ProductListViewModel @Inject constructor(
                     return@async networkRepository.getSneakerList()
                 }.await()
 
-                var list = mutableListOf<Product>()
-                if (hoodies!=null && hoodies.products.isNotEmpty())
+                val list = mutableListOf<Product>()
+                if (hoodies.products.isNotEmpty())
                     list.addAll(hoodies.products)
-                if (sneakers!=null && sneakers.products.isNotEmpty())
+                if (sneakers.products.isNotEmpty())
                     list.addAll(sneakers.products)
                 _productListViewState.value = ViewState.Success(list)
             } catch (e: Exception) {
