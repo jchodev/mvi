@@ -3,13 +3,10 @@ package com.jerry.mvi.ui.product.viewmodel
 import com.jerry.mvi.base.BaseViewModel
 import com.jerry.mvi.base.ViewState
 import com.jerry.mvi.data.model.Product
-import com.jerry.mvi.data.model.ProductListResponse
 import com.jerry.mvi.data.repository.NetworkRepository
 import com.jerry.mvi.ui.product.intent.ProductListIntent
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -17,6 +14,7 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.consumeAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+
 
 @HiltViewModel
 class ProductListViewModel @Inject constructor(
